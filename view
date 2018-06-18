@@ -50,8 +50,8 @@ function project_view() {
     echo "=====  Projects  ====="
     echo ""
 
-    # Find all projects and sort
-    PROJECTS=$(grep -o '[^  ]*+[^  ]\+' "$TODO_FILE" | grep '^+' | sort -u | sed 's/^+//g')
+    # Find only searched for projects and sort
+    PROJECTS=$(grep -o "[^  ]*+$term[^  ]*\+" "$TODO_FILE" | grep '^+' | sort -u | sed 's/^+//g')
 
     # For each project show header and the list of todo items
     for project in $PROJECTS; do
